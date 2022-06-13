@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 const About = () => {
-  return (
-    <div>About</div>
-  )
-}
+  const location = useLocation();
+  const { state } = location;
+  console.log(state);
+  return <div>About{state ? state.id : "no state"}</div>;
+};
 
-export default About
+export default About;

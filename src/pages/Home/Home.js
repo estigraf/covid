@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location.state);
+  return <div>Home </div>;
+};
 
-export default Home
+export default Home;
