@@ -11,8 +11,7 @@ const DailyData = (timLine) => {
           marginLeft: "150px",
           marginRight: "150px",
           fontFamily: "cursive",
-          padding:"10px"
-         
+          padding: "10px",
         }}
       >
         {Object.keys(timLine.timLine).map((el, i) => {
@@ -25,14 +24,12 @@ const DailyData = (timLine) => {
                 margin: "5px",
                 textAlign: "center",
                 padding: "20px",
-                paddingTop:"2px",
-                maxHeight:"45px",
-                //maxWidth:"430px"
-          
+                paddingTop: "2px",
+                maxHeight: "45px",
               }}
             >
               <div style={{ color: "red" }}>{el.toUpperCase()}</div>
-              <div style={{paddingBottom:"1px"}}>{timLine.timLine[el]}</div>
+              <div style={{ paddingBottom: "1px" }}>{timLine.timLine[el]}</div>
             </div>
           );
         })}
