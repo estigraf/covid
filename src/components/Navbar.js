@@ -1,107 +1,52 @@
-import { useNavigate } from "react-router-dom";
-import React, { useState,useRef,} from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import { Print } from "./Print";
+import * as React from "react";
+import { styled, alpha } from "@mui/material/styles";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import SearchIcon from "@mui/icons-material/Search";
+import ComboBox from "./ComboBox";
+import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
 
-const listStyle = {
-  display: "flex",
-  justifyContent: "space-around",
-  border: "black solid 1px",
-  listStyle: "none",
-};
+const Search = styled("div")(({ theme }) => ({
+  backgroundColor: "yellow",
+  "&:hover": {
+    backgroundColor: "red",
+  },
+}));
 
-const openList={
-  
-}
+const SearchIconWrapper = styled("div")(() => ({
+  position: "absolute",
+}));
 
-let op=[]
-const Navbar = () => {
-  const navigate = useNavigate();
-  const ref=useRef()
-  const [click,isclick]=useState(false)
-  const[listName,islistName]=useState([])
-  const [contryValue,setcontryValue]=useState("")
-  const navigateFunction=(e)=>{
-    const u=listName.filter(el=>{
-      return el==(e.target.value)
-      })
-      console.log(typeof(u));
-     u[0]==null? alert("no match contry"):
-    isclick(false) 
-    navigate("./contry/"+contryValue,{state:{"contry":contryValue}})
-    
-  }
-  async function axiosFunction(){
-    const listNames=[]
-        const countryUrl =('https://corona-api.com/countries') 
-        const {data} = await axios.get(countryUrl)
-        const list=(data.data)
-        //console.log(list);
-         list.map(el=>{
-             listNames.push(`${el.name}:${el.code}`);
-         }) 
-         islistName(listNames)         
-  }
-
- 
+export default function Navbar(setName) {
   return (
-    <div>
-      <ul style={listStyle}>
-        <li>
-          <Link to="/" >
-            Home
-          </Link>
-        </li>
-        <li>
-       {/* <form > */}
-      <input  placeholder="chose" value={contryValue} onFocus={(e)=>{
-        axiosFunction();
-        console.log(listName);
-        op=listName
-       
-        
-      }}
-       onKeyDown={(e)=>{
-         e.key=="Enter"?navigateFunction(e):console.log("no");
-        
-      //    navigate("./contry/"+e.target.value)
-         
-         
-        }}
-       onChange={(e)=>{
-; isclick(true);setcontryValue(e.target.value)
-e.target.value==""? op=listName: op=listName.filter(el=>{
-  return el.includes(e.target.value)
-})
-console.log(op);
-      }}/>
-
-      {/* <button type="submit" onClick={()=>{
-
-        navigate("./contry/"+contryValue,{state:{"contry":contryValue}})
-    
-      }}>יבא נתוני תחלואה</button>
-
-</form> */}
-        </li>
-        <li>
-          <Link to="/user/defult/defult">contry</Link>
-        </li>
-      </ul>
-    { click? <select style={openList} name="cotrys" id="lang" multiple>
-    { op.map(el=>{
-      return <option value={el} onKeyDown={(e)=>{ 
-      }} onClick={(e)=>{
-        setcontryValue(e.target.value)
-        // navigate("./contry/"+e.target.value,{state:{"contry":e.target.value}}); 
-       //console.log(e.target.parentElement.parentElement.innerHTML+"huhu"); 
-      }}>{el}</option>           
-     })  }
-      </select>:"" }
-      
-    </div>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton color="inherit">
+            <Link to="/About">
+              <MenuIcon />
+            </Link>
+          </IconButton>
+          <Typography
+            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+          >
+            <Link to="/">
+              <HomeIcon />
+            </Link>
+          </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <ComboBox setName={setName} />
+          </Search>
+        </Toolbar>
+      </AppBar>
+    </Box>
   );
-};
-
-export default Navbar;
+}
