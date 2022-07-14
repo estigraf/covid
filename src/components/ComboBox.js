@@ -37,9 +37,7 @@ export default function ComboBox() {
             e.currentTarget.classList.value ==
             `MuiAutocomplete-option Mui-focused`
           ) {
-            navigate("../country/" + e.currentTarget.innerHTML, {
-              state: { code: e.currentTarget.innerHTML },
-            });
+            navigate("../country/" + e.currentTarget.innerHTML);
           }
         }}
       />

@@ -27,7 +27,6 @@ const Most = ({ title, sorty, setIsClick }) => {
           <div
             onClick={() => {
               navigate(`../country/${el.country}`);
-              setIsClick(false);
             }}
           >
             {el.country}

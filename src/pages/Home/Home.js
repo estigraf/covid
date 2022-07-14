@@ -26,7 +26,6 @@ const Home = ({ countries, setIsClick, timLine }) => {
                 setisSort={setisSort}
                 title={title["title" + i]}
                 sorty={sort.sort((a, b) => b[el] - a[el]).slice(0, 5)}
-                setIsClick={setIsClick}
               />
             ))
           : null}
