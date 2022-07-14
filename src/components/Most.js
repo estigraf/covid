@@ -19,7 +19,6 @@ const Most = ({ title, sorty ,sort}) => {
     <>
       <ol style={editor}>
         <h2>{title}</h2>
-{console.log(sort)};
         {sorty.map((el) => (
           <div key={el.country}
             onClick={() => {

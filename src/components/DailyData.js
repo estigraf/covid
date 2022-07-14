@@ -8,20 +8,17 @@ const styleTime = {
   fontFamily: "cursive",
   padding: "10px",
 };
-const DailyData = (timLine, i) => {
+const styleBox = {
+  border: "5px solid blue",
+  textAlign: "center",
+  padding: "20px",         
+};
+const DailyData = (timLine) => {
   return (
     <>
       <div style={styleTime}>
-        {Object.keys(timLine.timLine).map((el, i) => {
-          const styleBox = {
-            border: "4px solid blue",
-            width: `${i + 2}0%`,
-            margin: "5px",
-            textAlign: "center",
-            padding: "20px",
-            paddingTop: "2px",
-            maxHeight: "45px",
-          };
+        {Object.keys(timLine.timLine).map((el) => {
+
           return (
             <div className={el} style={styleBox} key={el}>
               <div style={{ color: "red" }}>{el.toUpperCase()}</div>
