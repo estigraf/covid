@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import DailyData from "../../components/DailyData";
 import Most from "../../components/Most";
 
-const Home = ({ countries, setIsClick, timLine }) => {
+const Home = ({ countries,timLine }) => {
   const sort = [...countries];
   const [isSort, setisSort] = useState(false);
   const title = {
@@ -12,6 +12,7 @@ const Home = ({ countries, setIsClick, timLine }) => {
     title3: "Most Confiremed - Today",
   };
   const sortsArray = ["deaths", "todayDeaths", "cases", "todayCases"];
+  const styleSort={ display: "flex", marginLeft: "40px" }
   useEffect(() => {
     setisSort(true);
   }, [countries]);
@@ -19,7 +20,7 @@ const Home = ({ countries, setIsClick, timLine }) => {
   return (
     <div>
       <DailyData timLine={timLine} />
-      <div className="sort" style={{ display: "flex", marginLeft: "40px" }}>
+      <div style={styleSort}>
         {isSort
           ? sortsArray.map((el, i) => (
               <Most

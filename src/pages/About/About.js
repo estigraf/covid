@@ -1,21 +1,19 @@
 import React from "react";
-
+const about = {
+  widte: "700px",
+  textAlign: "center",
+  fontFamily: "cursive",
+  marginRight: "100px",
+  marginLeft: "100px",
+  fontSize: "xx-large",
+  background: "yellow",
+  border: "2.5px solid blue",
+  borderRadius: "5%",
+  marginTop: "25px",
+};
 const About = () => {
   return (
-    <div
-      style={{
-        widte: "700px",
-        textAlign: "center",
-        fontFamily: "cursive",
-        marginRight: "100px",
-        marginLeft: "100px",
-        fontSize:"xx-large",
-        background:"yellow",
-        border:"2.5px solid blue",
-        borderRadius:"5%",
-        marginTop:"25px"  
-      }}
-    >
+    <div style={about}>
       <p>
         The Ministry of Health reiterates the recommendation to avoid travel to
         Hubei Province, China - a recommendation issued by many other countries,
