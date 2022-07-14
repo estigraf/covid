@@ -33,12 +33,10 @@ export default function ComboBox() {
           <TextField {...params} label="choose contry" />
         )}
         onChange={(e) => {
-          if (
-            e.currentTarget.classList.value ==
-            `MuiAutocomplete-option Mui-focused`
-          ) {
-            navigate("../country/" + e.currentTarget.innerHTML);
+          if (e.currentTarget.classList.value.includes("learIndicator")) {
+            return;
           }
+          navigate("../country/" + e.target.childNodes[0].data);
         }}
       />
     </>
