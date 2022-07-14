@@ -23,7 +23,7 @@ const DailyData = (timLine, i) => {
             maxHeight: "45px",
           };
           return (
-            <div className={el} style={styleBox}>
+            <div className={el} style={styleBox} key={el}>
               <div style={{ color: "red" }}>{el.toUpperCase()}</div>
               <div style={{ paddingBottom: "1px" }}>{timLine.timLine[el]}</div>
             </div>

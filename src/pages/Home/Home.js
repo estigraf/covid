@@ -24,6 +24,7 @@ const Home = ({ countries,timLine }) => {
         {isSort
           ? sortsArray.map((el, i) => (
               <Most
+                key={el}
                 setisSort={setisSort}
                 title={title["title" + i]}
                 sorty={sort.sort((a, b) => b[el] - a[el]).slice(0, 5)}

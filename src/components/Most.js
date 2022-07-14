@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import * as React from "react";
 
-const Most = ({ title, sorty }) => {
+const Most = ({ title, sorty ,sort}) => {
   const navigate = useNavigate();
   const editor = {
     border: "solid 2.5px blue",
@@ -19,9 +19,9 @@ const Most = ({ title, sorty }) => {
     <>
       <ol style={editor}>
         <h2>{title}</h2>
-
+{console.log(sort)};
         {sorty.map((el) => (
-          <div
+          <div key={el.country}
             onClick={() => {
               navigate(`../country/${el.country}`);
             }}
