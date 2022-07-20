@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
 import DailyData from "../../components/DailyData";
 import Most from "../../components/Most";
-
+const styleSort = { display: "flex", marginLeft: "40px" };
 const Home = ({ countries, timLine }) => {
   const sort = [...countries];
   const sortsArray = [
@@ -10,13 +9,12 @@ const Home = ({ countries, timLine }) => {
     { label: "cases", title: "Most Deaths - Today" },
     { label: "todayCases", title: "Most Confiremed - Today" },
   ];
-  const styleSort = { display: "flex", marginLeft: "40px" };
 
   return (
     <div>
       <DailyData timLine={timLine} />
       <div style={styleSort}>
-        {sortsArray.map((el, i) => (
+        {sortsArray.map((el) => (
           <Most
             key={el.label}
             title={el.title}
