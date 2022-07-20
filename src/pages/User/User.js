@@ -12,7 +12,6 @@ export default function User() {
   const [isGetData, setIsGetData] = useState(false);
   const params = useParams();
   const { nameOfContry } = params;
-  const navigate = useNavigate();
   useEffect(() => {
     try {
       async function fetchData() {
