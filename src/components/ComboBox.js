@@ -43,9 +43,6 @@ export default function ComboBox() {
             navigate("../country/" + e.target.childNodes[0].data);
           }
         }}
-        onKeyDown={(e) => {
-          console.log(e.value);
-        }}
       />
     </>
   );

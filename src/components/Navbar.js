@@ -11,7 +11,7 @@ import ComboBox from "./ComboBox";
 import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 
-const Search = styled("div")(({ theme }) => ({
+const Search = styled("div")(() => ({
   backgroundColor: "yellow",
   "&:hover": {
     backgroundColor: "red",

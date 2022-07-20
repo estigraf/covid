@@ -4,7 +4,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React, { useState, useEffect } from "react";
-import {useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function User() {
@@ -44,6 +44,7 @@ export default function User() {
           all what we know about covid-19 in {nameOfContry}
         </Typography>
       </Accordion>
+
       {isGetData
         ? Object.keys(dailyApdate[0]).map((el) => {
             return (
