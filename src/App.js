@@ -11,51 +11,35 @@ import React, { useState, useEffect } from "react";
 function App() {
   const [countries, setCountries] = useState([]);
   const [timLine, settimLine] = useState([]);
-  const [isdaily, setisdaily] = useState(false);
+  const [isget, setisget] = useState(false);
+  const [setName, setsetName] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       const countriesApiUl = `https://disease.sh/v3/covid-19/countries`;
       const { data } = await axios.get(countriesApiUl);
+      const countriesApiUrl2 = `https://corona-api.com/timeline`;
+      const respons = await (await axios.get(countriesApiUrl2)).data;
       setCountries(data);
       setisget(true);
+      settimLine(respons.data[0]);
     }
     fetchData();
   }, []);
-  useEffect(() => {
-    try {
-      async function fetchData() {
-        const countriesApiUrl = `https://corona-api.com/timeline`;
-        const { data } = await axios.get(countriesApiUrl);
 
-        settimLine(data.data[0]);
-        setisdaily(true);
-      }
-      fetchData();
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
-  const [isget, setisget] = useState(false);
-  const [setName, setsetName] = useState([]);
+
 
   return (
     <div>
       <BrowserRouter>
         {isget ? <Navbar isget={isget} setName={setName} /> : null}
         <Routes>
-          {isdaily ? (
-            <Route
-              path="/"
-              element={
-                <Home
-                  isdaily={isdaily}
-                  countries={countries}
-                  timLine={timLine}
-                />
-              }
-            />
-          ) : null}
+          (
+          <Route
+            path="/"
+            element={<Home countries={countries} timLine={timLine} />}
+          />
+          )
           <Route path="/about" element={<About />} />
           <Route path="/country/:nameOfContry" element={<User />} />
           <Route path="*" element={<NotFound />} />

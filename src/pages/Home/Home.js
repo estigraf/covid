@@ -2,35 +2,27 @@ import React, { useEffect, useState } from "react";
 import DailyData from "../../components/DailyData";
 import Most from "../../components/Most";
 
-const Home = ({ countries,timLine }) => {
+const Home = ({ countries, timLine }) => {
   const sort = [...countries];
-  const [isSort, setisSort] = useState(false);
-  const title = {
-    title0: "Most Deaths - All Time",
-    title1: "Most Confiremed - All Time",
-    title2: "Most Deaths - Today",
-    title3: "Most Confiremed - Today",
-  };
-  const sortsArray = ["deaths", "todayDeaths", "cases", "todayCases"];
-  const styleSort={ display: "flex", marginLeft: "40px" }
-  useEffect(() => {
-    setisSort(true);
-  }, [countries]);
+  const sortsArray = [
+    { label: "deaths", title: "Most Deaths - All Time" },
+    { label: "todayDeaths", title: "Most Confiremed - All Time" },
+    { label: "cases", title: "Most Deaths - Today" },
+    { label: "todayCases", title: "Most Confiremed - Today" },
+  ];
+  const styleSort = { display: "flex", marginLeft: "40px" };
 
   return (
     <div>
       <DailyData timLine={timLine} />
       <div style={styleSort}>
-        {isSort
-          ? sortsArray.map((el, i) => (
-              <Most
-                key={el}
-                setisSort={setisSort}
-                title={title["title" + i]}
-                sorty={sort.sort((a, b) => b[el] - a[el]).slice(0, 5)}
-              />
-            ))
-          : null}
+        {sortsArray.map((el, i) => (
+          <Most
+            key={el.label}
+            title={el.title}
+            sorty={sort.sort((a, b) => b[el.label] - a[el.label]).slice(0, 5)}
+          />
+        ))}
       </div>
     </div>
   );

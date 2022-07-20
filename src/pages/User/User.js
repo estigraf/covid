@@ -4,14 +4,15 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 export default function User() {
   const [dailyApdate, setDailyApdate] = useState([]);
-  const [isGetData,setIsGetData] = useState(false);
+  const [isGetData, setIsGetData] = useState(false);
   const params = useParams();
   const { nameOfContry } = params;
+  const navigate = useNavigate();
   useEffect(() => {
     try {
       async function fetchData() {

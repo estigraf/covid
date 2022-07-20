@@ -11,14 +11,13 @@ const styleTime = {
 const styleBox = {
   border: "5px solid blue",
   textAlign: "center",
-  padding: "20px",         
+  padding: "20px",
 };
 const DailyData = (timLine) => {
   return (
     <>
       <div style={styleTime}>
         {Object.keys(timLine.timLine).map((el) => {
-
           return (
             <div className={el} style={styleBox} key={el}>
               <div style={{ color: "red" }}>{el.toUpperCase()}</div>

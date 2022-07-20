@@ -16,7 +16,7 @@ export default function ComboBox() {
       setCountry(data);
       setsetName(
         data.map((el) => {
-          return { label: el.country, code: el.countryInfo.iso2 };
+          return el.country;
         })
       );
       setisget(true);
@@ -27,16 +27,24 @@ export default function ComboBox() {
   return (
     <>
       <Autocomplete
+        disablePortal
+        id="combo-box-demo"
         options={setName}
         sx={{ width: 250 }}
         renderInput={(params) => (
           <TextField {...params} label="choose contry" />
         )}
         onChange={(e) => {
+          console.log(e.nativeEvent);
+
           if (e.currentTarget.classList.value.includes("learIndicator")) {
             return;
+          } else {
+            navigate("../country/" + e.target.childNodes[0].data);
           }
-          navigate("../country/" + e.target.childNodes[0].data);
+        }}
+        onKeyDown={(e) => {
+          console.log(e.value);
         }}
       />
     </>
